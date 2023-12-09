@@ -34,5 +34,3 @@ const ResumeSection: React.FC<ResumeSectionProps> = ({
 );
 
 export default ResumeSection;
-
-//underline decoration-dashed underline-offset-4

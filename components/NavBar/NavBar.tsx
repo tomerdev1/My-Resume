@@ -34,10 +34,6 @@ const NavBar: React.FC<Props> = ({ children, subject }: Props) => (
     <Label variant="secondry" classnameAddition="ml-2 mr-auto" size="huge" bold>
       {subject}
     </Label>
-
-    {/* <p className="text-text-secondry ">
-      {subject}
-    </p> */}
     {children}
   </nav>
 );
