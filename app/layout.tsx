@@ -1,29 +1,28 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Header from './Header'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Header from "./Header";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Tomer Abady',
-  description: '',
-}
+  title: "Tomer Abady",
+  description: "",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html className="h-full overflow-hidden" lang="en">
+      <body className="flex flex-col h-full">
         <header>
           <Header />
-        </header><main>
-          {children}
-        </main>
+        </header>
+        <main className="m-5 h-[calc(100vh-100px)]">{children}</main>
       </body>
     </html>
-  )
+  );
 }
