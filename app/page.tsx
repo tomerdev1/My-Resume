@@ -1,17 +1,34 @@
+"use client";
 /* eslint-disable max-len */
 import ResumeSection from "@/components/ResumeSection/ResumeSection";
-import { resumeEducationData, resumeWorkExpData } from "@/data/resume-data";
+import TechStack from "@/components/TechStack/TechStack";
+import {
+  getTechStackByCompanyName,
+  resumeEducationData,
+  resumeWorkExpData,
+} from "@/data/resume-data";
+import { useState } from "react";
 
-export default function Home() {
+const Home: React.FC = () => {
+  const [focusedCompany, setFocusedCompany] = useState<string>();
   return (
     <main className="flex flex-row w-full h-full ">
       <div className="flex p-4 flex-col gap-8 overflow-y-scroll h-full w-3/5">
-        <ResumeSection {...resumeWorkExpData} />
-        <ResumeSection {...resumeEducationData} />
+        <ResumeSection
+          {...resumeWorkExpData}
+          onClickCompany={(name) => setFocusedCompany(name)}
+        />
+        <ResumeSection
+          {...resumeEducationData}
+          onClickCompany={(name) => setFocusedCompany(name)}
+        />
       </div>
-      <div className=" w-2/5 h-full flex items-center justify-center">
-        <p>Tech Stack</p>
-      </div>
+
+      {focusedCompany && (
+        <TechStack techs={getTechStackByCompanyName(focusedCompany).techs} />
+      )}
     </main>
   );
-}
+};
+
+export default Home;
