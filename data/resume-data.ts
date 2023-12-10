@@ -1,15 +1,16 @@
 /* eslint-disable max-len */
 import { ResumeSectionProps } from "@/components/ResumeSection/ResumeSection";
+import { TechStackProps } from "@/components/TechStack/TechStack";
 
-export const resumeWorkExpData: ResumeSectionProps = {
+export const resumeWorkExpData: Omit<ResumeSectionProps, "onClickCompany"> = {
   name: "Work Experiance",
   items: [
     {
       companyName: "Wib",
       job: "Software Developer",
       workYears: {
-        startYear: "2021",
-        endYear: "2023",
+        startYear: 2021,
+        endYear: 2023,
       },
       contentBullets: [
         "Early developer in startup environment, doing both backend and frontend.",
@@ -21,8 +22,8 @@ export const resumeWorkExpData: ResumeSectionProps = {
       companyName: "Careback",
       job: "Mobile Application Developer",
       workYears: {
-        startYear: "2020",
-        endYear: "2021",
+        startYear: 2020,
+        endYear: 2021,
       },
       contentBullets: [
         "Joined a small startup at its very beginning to build it's product from scratch.",
@@ -34,8 +35,8 @@ export const resumeWorkExpData: ResumeSectionProps = {
       companyName: "Army Service",
       job: "Telecommunications Specialist",
       workYears: {
-        startYear: "2016",
-        endYear: "2019",
+        startYear: 2016,
+        endYear: 2019,
       },
       contentBullets: [
         "Managed the implementation of VSAT, a new expirimental satellite communication system in Kfir brigade.",
@@ -46,12 +47,15 @@ export const resumeWorkExpData: ResumeSectionProps = {
   ],
 };
 
-export const resumeEducationData: ResumeSectionProps = {
+export const resumeEducationData: Omit<ResumeSectionProps, "onClickCompany"> = {
   name: "Education",
   items: [
     {
-      companyName: "Online Courses",
+      companyName: "Home Studies",
       job: "Home Student",
+      workYears: {
+        startYear: 2019,
+      },
       contentBullets: [
         "iOS 13 & Swift 5 - The Complete iOS App Development Bootcamp.",
         "How to Create iOS 2D Games with SpriteKit and Swift 4.",
@@ -66,22 +70,81 @@ export const resumeEducationData: ResumeSectionProps = {
       ],
     },
     {
-      companyName: "HAGIMNASYA HARIALIT",
+      companyName: "Reseve Studies",
       job: "Student",
       workYears: {
-        startYear: "2015",
-        endYear: "2016",
+        startYear: 2015,
+        endYear: 2016,
       },
       contentBullets: ["10 layer osi model", "code complexity", "OOP"],
     },
     {
-      companyName: "GIMNASIYA GAN NAHUM",
+      companyName: "High School",
       job: "Student",
       workYears: {
-        startYear: "2013",
-        endYear: "2015",
+        startYear: 2013,
+        endYear: 2015,
       },
       contentBullets: ["Expanded computer scince class", "Grade avg 95"],
     },
   ],
+};
+
+const wibTechStackData: TechStackProps = {
+  techs: [
+    "Typescript",
+    "JS",
+    "Python",
+    "CSS",
+    "scss",
+    "less",
+    "Bash",
+    "Docker",
+    "supabase",
+    "Kubernetes",
+    "Flask",
+    "openapi",
+    "Node",
+    "Express",
+  ],
+};
+const carebackTeckStackData: TechStackProps = {
+  techs: ["Flutter", "Dart", "Firebase Firestore"],
+};
+const highSchoolTechStackData: TechStackProps = {
+  techs: ["C#", ".Net", "Assembly"],
+};
+const reserveStudiesTechStack: TechStackProps = {
+  techs: ["OOP", "C"],
+};
+const homeStudiesTechStack: TechStackProps = {
+  techs: [
+    "Python",
+    "Swift",
+    "React",
+    "React-Native",
+    "Bash",
+    "C#",
+    "SOLID",
+    "MVC",
+    "MVVM",
+  ],
+};
+const armyTechStack: TechStackProps = {
+  techs: [],
+};
+
+const techStacksData: Record<string, TechStackProps> = {
+  wib: wibTechStackData,
+  careback: carebackTeckStackData,
+  "reseve-studies": reserveStudiesTechStack,
+  "high-school": highSchoolTechStackData,
+  "home-studies": homeStudiesTechStack,
+  "army-service": armyTechStack,
+};
+
+export const getTechStackByCompanyName = (
+  companyName: string
+): TechStackProps => {
+  return techStacksData[companyName.toLowerCase().replace(" ", "-")];
 };

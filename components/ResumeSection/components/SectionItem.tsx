@@ -1,41 +1,38 @@
+"use client";
 import Label from "@/components/Label/Label";
+import ListCmp from "@/components/ListCmp/ListCmp";
 import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ReactElement } from "react";
+import { MouseEventHandler, ReactElement } from "react";
 
 interface WorkYears {
-  startYear: string;
-  endYear: string;
+  startYear: number;
+  endYear?: number;
 }
 
 export interface SectionItemProps {
   companyName: string;
   job: string;
-  workYears?: WorkYears;
+  workYears: WorkYears;
   contentBullets: string[];
+  onClick?: (companyName: string) => void;
 }
 
 const ItemContent = (contentBullets: string[]): ReactElement => {
   return (
-    <AccordionContent>
-      {
-        <ul className="list-disc list-inside">
-          {contentBullets.map((contentBullet) => (
-            <li key={contentBullet}>{contentBullet}</li>
-          ))}
-        </ul>
-      }
-    </AccordionContent>
+    <AccordionContent>{<ListCmp items={contentBullets} />}</AccordionContent>
   );
 };
 
 const workYearsDisplay = (workYears: WorkYears): ReactElement => {
   return (
     <Label size="small" variant="default">
-      {workYears.startYear + "-" + workYears.endYear + "  "}
+      {`${workYears.startYear.toString()} - ${
+        workYears.endYear ? workYears.endYear?.toString() : "Present"
+      }`}
     </Label>
   );
 };
@@ -61,10 +58,11 @@ const SectionItem: React.FC<SectionItemProps> = ({
   job,
   workYears,
   contentBullets,
+  onClick,
 }: SectionItemProps): ReactElement => {
   return (
     <AccordionItem key={companyName} value={companyName}>
-      <AccordionTrigger>
+      <AccordionTrigger onClick={() => onClick && onClick(companyName)}>
         {JobSummery(companyName, job, workYears)}
       </AccordionTrigger>
       {ItemContent(contentBullets)}
