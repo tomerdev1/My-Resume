@@ -12,7 +12,7 @@ import { useState } from "react";
 const Home: React.FC = () => {
   const [focusedCompany, setFocusedCompany] = useState<string>();
   return (
-    <main className="flex flex-row w-full h-full ">
+    <main className="flex flex-row w-full h-full">
       <div className="flex p-4 flex-col gap-8 overflow-y-scroll h-full w-3/5">
         <ResumeSection
           {...resumeWorkExpData}
@@ -23,7 +23,6 @@ const Home: React.FC = () => {
           onClickCompany={(name) => setFocusedCompany(name)}
         />
       </div>
-
       {focusedCompany && (
         <TechStack techs={getTechStackByCompanyName(focusedCompany).techs} />
       )}

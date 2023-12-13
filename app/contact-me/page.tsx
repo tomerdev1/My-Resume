@@ -1,5 +1,4 @@
 "use client";
-
 import ButtonCmp from "@/components/ButtonCmp/ButtonCmp";
 import InputCmp from "@/components/InputCmp/InputCmp";
 import Label from "@/components/Label/Label";
@@ -8,15 +7,18 @@ import { useState } from "react";
 const ContactMePage: React.FC = () => {
   const [isLoading, setLoading] = useState(false);
 
+  const resetFrom = (event: any) => {
+    event.target.name.value = "";
+    event.target.email.value = "";
+    event.target.message.value = "";
+  };
+
   async function handleSubmit(event: any) {
     event.preventDefault();
     setLoading(true);
-    const data = {
-      name: String(event.target.name.value),
-      email: String(event.target.email.value),
-      message: String(event.target.message.value),
-    };
-    const { name, email, message } = data;
+    const name = String(event.target.name.value);
+    const email = String(event.target.email.value);
+    const message = String(event.target.message.value);
     const response = await fetch("/api/contact", {
       method: "POST",
       headers: {
@@ -24,19 +26,14 @@ const ContactMePage: React.FC = () => {
       },
       body: JSON.stringify({ name, email, message }),
     });
-
     if (response.ok) {
       console.log("Message sent successfully");
-      setLoading(false);
-      // reset the form
-      event.target.name.value = "";
-      event.target.email.value = "";
-      event.target.message.value = "";
+      resetFrom(event);
     }
     if (!response.ok) {
       console.log("Error sending message");
-      setLoading(false);
     }
+    setLoading(false);
   }
 
   return (
