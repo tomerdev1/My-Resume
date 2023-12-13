@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// interface ContactRequest extends NextRequest {
-//   body: {
-//
-//   };
-// }
 export type ContactAPIPostHandler = (
   req: NextRequest,
   res: NextResponse
