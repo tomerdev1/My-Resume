@@ -43,7 +43,8 @@ const JobSummery = (
   workYears?: WorkYears
 ): ReactElement => {
   return (
-    <div className="flex flex-row justify-center gap-2 items-center">
+    // eslint-disable-next-line max-len
+    <div className="flex flex-row justify-center gap-2 [&>*]:cursor-pointer items-center">
       <Label variant="primary" bold size="large">
         {companyName}
       </Label>
