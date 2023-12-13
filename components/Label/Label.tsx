@@ -1,13 +1,12 @@
 import { cn } from "@/lib/utils";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, LabelHTMLAttributes } from "react";
 
 type TextVariant = "primary" | "secondry" | "default" | "disabled";
 type Size = "small" | "medium" | "large" | "huge";
 
 interface Props
-  extends Omit<HTMLAttributes<HTMLParagraphElement>, "className" | "children"> {
+  extends Omit<LabelHTMLAttributes<HTMLLabelElement>, "className"> {
   classnameAddition?: string;
-  children?: string;
   variant: TextVariant;
   bold?: boolean;
   size?: Size;
@@ -45,10 +44,11 @@ const Label: React.FC<Props> = ({
   variant = "default",
   bold = false,
   size = "medium",
+  ...props
 }: Props) => {
   const variantClassname = variantToClassnameVariant(variant);
   return (
-    <p
+    <label
       className={cn(
         SizeToClassnameSize(size),
         bold ? "font-bold" : "font-normal",
@@ -56,9 +56,10 @@ const Label: React.FC<Props> = ({
         classnameAddition,
         "font-ubuntu"
       )}
+      {...props}
     >
       {children}
-    </p>
+    </label>
   );
 };
 export default Label;

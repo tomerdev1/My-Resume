@@ -4,7 +4,7 @@ interface Props extends Omit<LinkProps, "href" | "className"> {
   address: string;
 }
 
-const LinkCmp: React.FC<Props> = ({ address }: Props) => (
+const LinkCmp: React.FC<Props> = ({ address, ...props }: Props) => (
   <Link
     href={
       address.toLowerCase() == "home"
@@ -21,6 +21,7 @@ const LinkCmp: React.FC<Props> = ({ address }: Props) => (
         focus:rounded-md 
         focus:outline-none 
         focus:ring-text-primary"
+    {...props}
   >
     {address}
   </Link>
