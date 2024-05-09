@@ -6,6 +6,19 @@ export const resumeWorkExpData: Omit<ResumeSectionProps, "onClickCompany"> = {
   name: "Work Experiance",
   items: [
     {
+      companyName: "Alma",
+      job: "Software Developer",
+      workYears: {
+        startYear: 2023,
+        endYear: 2024,
+      },
+      contentBullets: [
+        "Half time Full stack developer at Alma – cyber security startup.",
+        "Managed the dashboard makeover - until it became pixel perfect.",
+        "Fixed issues with the authentication controller and added additional authentication methods.",
+      ],
+    },
+    {
       companyName: "Wib",
       job: "Software Developer",
       workYears: {
@@ -89,7 +102,9 @@ export const resumeEducationData: Omit<ResumeSectionProps, "onClickCompany"> = {
     },
   ],
 };
-
+const almaTechStackData: TechStackProps = {
+  techs: ["Typescript", "JS", "Tailwind", "shadcn", "Next.JS"],
+};
 const wibTechStackData: TechStackProps = {
   techs: [
     "Typescript",
@@ -135,6 +150,7 @@ const armyTechStack: TechStackProps = {
 };
 
 const techStacksData: Record<string, TechStackProps> = {
+  alma: almaTechStackData,
   wib: wibTechStackData,
   careback: carebackTeckStackData,
   "reseve-studies": reserveStudiesTechStack,
