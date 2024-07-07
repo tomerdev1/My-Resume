@@ -80,6 +80,7 @@ export const resumeEducationData: Omit<ResumeSectionProps, "onClickCompany"> = {
         "Flutter & Dart - The Complete Guide [2021 Edion].",
         "Clean Code: Fundamentals.",
         "Clean Code: SOLID Principles.",
+        "Unity C# Mobile Game Development: Make 3 Games From Scratch",
       ],
     },
     {
@@ -143,6 +144,7 @@ const homeStudiesTechStack: TechStackProps = {
     "SOLID",
     "MVC",
     "MVVM",
+    "Unity",
   ],
 };
 const armyTechStack: TechStackProps = {
